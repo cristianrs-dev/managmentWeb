@@ -1,14 +1,16 @@
-# managment_web
+# MANAGMENT WEB #
 Versão web do projeto desktop managment, projeto desenvolvido no curso técnico de Sistemas
 
-**TECNOLOGIAS APLICADAS NO PROJETO:**
+## TECNOLOGIAS APLICADAS NO PROJETO: ##
+### BACK-END ###
+- MYSQL
+- JAVA
+### FRONT-ED ###
 - HTML
 - CSS
 - JAVASCRIPT
-- MYSQL
-- JAVA
 
-**TIME DE DESENVOLVIMENTO**
+### TIME DE DESENVOLVIMENTO ###
   - Cristian Ramos (Desenvolvedor Full Stack)
 
 **OBJETIVO:** 
