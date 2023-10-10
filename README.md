@@ -13,10 +13,10 @@ Versão web do projeto desktop managment, projeto desenvolvido no curso técnico
 ### TIME DE DESENVOLVIMENTO ###
   - Cristian Ramos (Desenvolvedor Full Stack)
 
-**OBJETIVO:** 
+### OBJETIVO: ###
 - A proposta do software visa automatizar processos administrativos em condomínios, a médio prazo podendo se tornar um sass
 
-**FUNCIONALIDADES PREVISTAS**
+### FUNCIONALIDADES PREVISTAS ###
 - CADASTRO DE MORADORES
 - AGENDAMENTO DE VISITAS
 - RESERVA DE ESPAÇOS
