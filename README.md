@@ -1,5 +1,6 @@
 # MANAGMENT WEB #
 Versão web do projeto desktop managment, projeto desenvolvido no curso técnico de Sistemas
+ - Confira o resultado https://eclipsecjp.github.io/managment_web/
 
 ## TECNOLOGIAS APLICADAS NO PROJETO: ##
 ### BACK-END ###
