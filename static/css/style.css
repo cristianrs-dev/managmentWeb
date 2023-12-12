@@ -1,6 +1,21 @@
+/*TELA DE LOGIN***********************************/
 .login{
     background-color: #7343dd;
 }
 .menssagem-error{
     color:#DD7D7D;
 }
+/*************************************************/
+
+/*TELA DE MENU*************************************/
+.background{
+    background-color: #3B4E90;
+}
+
+.boas-vindas{
+    text-transform: uppercase;
+    color: white;
+    font-size: x-large;
+    max-width: 100%;
+}
+/* **************************** */
