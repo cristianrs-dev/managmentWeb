@@ -62,3 +62,16 @@
    justify-content: center;
 }
 /**************************************************/
+
+/*TELA MENU MORADOR****************/
+
+.background-menu-morador{
+    background-color: #0A7AA6;
+}
+/*************************************/
+
+/*TELA MENU AGENDAMENTO*/
+
+.background-menu-agendamento{
+    background-color: #6C5CE7;
+}
