@@ -1,3 +1,105 @@
+/*TELA DE LOGIN***********************************/
 .login{
     background-color: #7343dd;
+}
+.menssagem-error{
+    color:#DD7D7D;
+}
+/*************************************************/
+
+/*TELA DE MENU*************************************/
+.background-menu{
+    background-color: #3B4E90;
+}
+
+.boas-vindas{
+    text-transform: uppercase;
+    color: white;
+    font-size: x-large;
+    max-width: 100%;
+}
+/* ************************************************/
+
+/* TELA MENU ADM**********************************/
+.icone-menu{
+    background-color: #0984E3;
+    display: none;
+}
+.menu-adm-mobile{
+    display: none;
+}
+.traco{
+    background-color:white;
+    margin: 10px;
+    height: 10px;
+    width: 80px;
+}
+.background-menu-adm{
+    background-color: #0984E3;
+}
+/*
+.menu-adm{
+    border:1px solid white;
+   
+}*/
+.painel{
+    display: flex;
+  /*  border: 1px solid white;*/
+   
+}
+.container-painel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  /*  border: 1px solid white;*/
+    width: 100%;
+    
+}
+.painel-menu{
+   display: flex;
+   flex-wrap: wrap;
+  /* max-width: 50%;*/
+   align-items: center;
+   justify-content: center;
+}
+/**************************************************/
+
+/*TELA MENU MORADOR****************/
+
+.background-menu-morador{
+    background-color: #0A7AA6;
+}
+/*************************************/
+
+/*TELA MENU AGENDAMENTO*/
+
+.background-menu-agendamento{
+    background-color: #6C5CE7;
+}
+
+
+.background-menu-cadastro-morador{
+    background-color:#3B4E90;
+}
+
+.background-menu-novo-morador{
+    background-color:#0984E3;
+}
+
+.background-menu-atualiza-morador{
+    background-color:#0A7AA6;
+}
+
+.background-menu-consulta-morador{
+    background-color:#6C5CE7;
+}
+
+/*TELA MENU ADMINISTRADOR*/
+
+.background-menu-administrador{
+    background-color:#0984E3;
+}
+/*Tela atualiação ******************/
+.background-menu-atualiza-colaborador{
+    background-color:#0A7AA6;
 }
