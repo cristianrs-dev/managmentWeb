@@ -58,19 +58,10 @@
                 <div class="container-painel">
                     <div class="painel-menu" >
                         <form>
-                            <!--
-                                nome completo
-                                documento
-                                sexo
-                                contato
-                                veiculo
-                                modelo
-                                placa
-                                cor
-                            -->
+                         
                             <div class="mb-3">
                                 <label for="name" class="form-label  text-white">Nome Completo</label>
-                                <input type="text" class="form-control" id="name" name = " name" required>
+                                <input type="text" class="form-control" id="name" name = " name" required pattern="[a-z]{1,20}$">
                                 
                                 <select name="documento" id="documento" required>
                                     <option value="">RG</option>
