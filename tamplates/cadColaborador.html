@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/responsivo.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
    
     <title>Managment Login</title>
@@ -57,16 +57,16 @@
 
                 <div class="container-painel">
                     <div class="painel-menu" >
-                        <form>
+                        <form id="validaForms" >
                             <div class="mb-3">
                                 <label for="name" class="form-label  text-white">Nome Completo</label>
-                                <input type="text" class="form-control" id="name" name = " name" required pattern="[a-z]{1,20}$">
+                                <input type="text" class="form-control" id="nome" name = " nome" required pattern="[a-z]{1,20}$">
                                 <br>
                                 <select name="documento" id="documento" required>
                                     <option value="">RG</option>
                                     <option value="">CPF</option>
                                 </select><label for="documento" class="form-label  text-white"></label>
-                                <input type="text" class="form-control" id="contact" name="contact" required>
+                                <input type="text" class="form-control" id="documento" name="documento" required>
                                 <br>
                                 <select name="genero" id="sexo" required>
                                     <option value="">Masculino</option>
@@ -74,11 +74,11 @@
                                 </select><label for="genero" class="form-label text-white"></label>
                                 <br>
                                 <label for="contato" class="form-label text-white">Cargo</label>
-                                <input type="text" class="form-control" id="contact" name="contact" required>
+                                <input type="text" class="form-control" id="cargo" name="cargo" required>
 
                                 <br>
                                 <label for="modelo" class="form-label text-white">Salario</label>
-                                <input type="text" class="form-control" id="modelo" name = "modelo" required>
+                                <input type="text" class="form-control" id="salario" name = "salario" required>
 
                                 
                             </div>
