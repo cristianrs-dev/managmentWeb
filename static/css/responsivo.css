@@ -5,7 +5,7 @@
 }
 
 
-/*tela menu*/
+/*tela menu********************/
 @media screen and (max-width:414px){
     .boas-vindas{
         display: none;
@@ -13,6 +13,46 @@
     .menu{
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+/* TELA MENU ADM********************/
+@media screen and (max-width:414px){
+    .boas-vindas{
+        display: none;
+    }
+    
+    .icone-menu{
+        display: block;
+    }
+   
+    .menu-adm-mobile{
+        display: inline;
+        position: absolute;
+        background-color: #74b9ff;
+        width: 300px;
+        text-align: center;
+       
+    }
+    .menu-adm{
+        display: none;
+    }
+    .container-painel{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 600px;
+    }
+    .icone-menu-adm{
+        width: 150px;
+        height: auto;
+    }
+    .painel-menu{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
     }
