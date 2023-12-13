@@ -10,7 +10,7 @@
    
     <title>Managment Login</title>
 </head>
-<body class="m-auto login background-menu-cadastro-morador">
+<body class="m-auto login background-menu-novo-morador">
     <header>
         <div id="menu" onclick="menu()" class="icone-menu">
             <div class="traco"></div>
@@ -27,7 +27,7 @@
                 </div>
                 <div>
                     <a href="atualizaMorador.html">
-                        <img class="icone" src="../img/iconCtrlAtulizarCadFuncionario.png" alt="iconeMorador">
+                        <img class="icone" src="../img/iconCrtlUpdate.png" alt="iconeMorador">
                     </a>
                 </div>
                 <div>
@@ -45,7 +45,7 @@
                     </div>
                     <div>
                         <a href="atualizaMorador.html">
-                            <img class="icone" src="../img/iconCtrlAtulizarCadFuncionario.png" alt="iconeMorador">
+                            <img class="icone" src="../img/iconUpdateCadastro.png" alt="iconeMorador">
                         </a>
                     </div>
                     <div>
@@ -58,32 +58,41 @@
                 <div class="container-painel">
                     <div class="painel-menu" >
                         <form>
-                          
+                            <!--
+                                nome completo
+                                documento
+                                sexo
+                                contato
+                                veiculo
+                                modelo
+                                placa
+                                cor
+                            -->
                             <div class="mb-3">
-                                <label for="name" class="form-label text-white">Nome Completo</label>
+                                <label for="name" class="form-label  text-white">Nome Completo</label>
                                 <input type="text" class="form-control" id="name" name = " name" required>
                                 
                                 <select name="documento" id="documento" required>
                                     <option value="">RG</option>
                                     <option value="">CPF</option>
-                                </select><label for="documento" class="form-label text-white"></label>
+                                </select><label for="documento" class="form-label  text-white"></label>
                                 <br>
                                 <select name="genero" id="sexo" required>
                                     <option value="">Masculino</option>
                                     <option value="">Feminino</option>
-                                </select><label for="genero" class="form-label"></label>
+                                </select><label for="genero" class="form-label text-white"></label>
                                 <br>
-                                <label for="contato" class="form-label  text-white">Contato</label>
+                                <label for="contato" class="form-label text-white">Contato</label>
                                 <input type="text" class="form-control" id="contact" name="contact" required>
 
                                 <label for="veiculo" class="form-label  text-white">Veículo</label>
                                 <br>
-                                <select name="veiculo" id="transporte">
+                                <select name="veiculo" id="transporte" required>
                                     <option value="">Carro</option>
                                     <option value="">Moto</option>
                                 </select>
                                 <br>
-                                <label for="modelo" class="form-label  text-white">Modelo</label>
+                                <label for="modelo" class="form-label text-white">Modelo</label>
                                 <input type="text" class="form-control" id="modelo" name = "modelo" required>
 
                                 <label for="placa" class="form-label text-white">Placa</label>

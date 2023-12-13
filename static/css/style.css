@@ -37,20 +37,21 @@
 .background-menu-adm{
     background-color: #0984E3;
 }
+/*
 .menu-adm{
     border:1px solid white;
    
-}
+}*/
 .painel{
     display: flex;
-    border: 1px solid white;
+  /*  border: 1px solid white;*/
    
 }
 .container-painel{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid white;
+  /*  border: 1px solid white;*/
     width: 100%;
     
 }
@@ -74,4 +75,27 @@
 
 .background-menu-agendamento{
     background-color: #6C5CE7;
+}
+
+
+.background-menu-cadastro-morador{
+    background-color:#3B4E90;
+}
+
+.background-menu-novo-morador{
+    background-color:#0984E3;
+}
+
+.background-menu-atualiza-morador{
+    background-color:#0A7AA6;
+}
+
+.background-menu-consulta-morador{
+    background-color:#6C5CE7;
+}
+
+/*TELA MENU ADMINISTRADOR*/
+
+.background-menu-administrador{
+    background-color:#0984E3;
 }
