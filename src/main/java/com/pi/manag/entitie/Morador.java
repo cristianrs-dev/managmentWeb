@@ -1,19 +1,41 @@
 package com.pi.manag.entitie;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
 
 
 
+@Data
+@Entity
+@Table(name="Morador")
 public class Morador extends PessoaFisica{
-    
+     @Id
+     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String tipo;
+    @ManyToOne
+    @JoinColumn(name = "apartamento_id")
     private Apartamento apartamento;
+    @ManyToOne
+    @JoinColumn(name = "condominio_id")
     private Condominio condominio;
+    @ManyToOne
+    @JoinColumn(name = "secretaria_id")
     private Secretaria secretaria;
+    @ManyToOne
+    @JoinColumn(name = "veiculo_id")
     private Veiculo veiculo;
+    @ManyToOne
+    @JoinColumn(name = "visita_id")
     private Visitante visita;
     
-    
+    /*
     public Morador(int id, Veiculo veiculo, char sexo, String rg, String nome) {
         super(sexo, rg, nome);
         this.id = id;
@@ -106,7 +128,7 @@ public class Morador extends PessoaFisica{
             System.out.println("Cpf:.."+this.getCpf());     
     }
     
-    
+    */
     
     
 }
