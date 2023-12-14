@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UserController {
@@ -25,20 +26,47 @@ public class UserController {
     }
     
     @PostMapping("/autenticar")
-    public String autentitcar(@RequestBody User user){
+    public String autentitcar(@RequestBody User user,Model model){
         User usuario = new User();
         usuario.setLogin(user.getLogin());
          usuario.setSenha(user.getSenha());
-        service.autenticar(usuario.getLogin(), usuario.getSenha());
-        return "menu";
+        boolean autenticado = service.autenticar(usuario.getLogin(), usuario.getSenha());
+        if (autenticado) {
+        return "redirect:/menu"; // Redireciona para o menu se autenticado com sucesso
+    } else {
+        model.addAttribute("error", true);
+        return "redirect:/error"; // Redireciona para a página de erro se a autenticação falhar
+    }
+    }
+    //ESTE METODO EXIBE A PAGINA DE ERRO
+    @GetMapping("/erro")
+    public ModelAndView pageErro(){
+        ModelAndView view = new ModelAndView("error");
+        return view;
     }
     
-    @GetMapping("/erro")
-    public String pageErro(Model model){
-        User erro = new User();
-        model.addAttribute("erro",erro);
-        return "redirect:/index";
+    //ESTE METODO EXIBE A PAGINA MENU
+     @GetMapping("/menu")
+    public ModelAndView pageMenu(){
+        ModelAndView view = new ModelAndView("menu");
+        return view;
     }
+    
+    //ESTE METODO EXIBE A PAGINA MENU DA ADMINISTRAÇÃO
+     @GetMapping("/menuAdm")
+    public ModelAndView pageMenuAdm(){
+        ModelAndView view = new ModelAndView("menuAdm");
+        return view;
+    }
+    //ESTE METODO EXIBE A PAGINA MENU DA ADMINISTRAÇÃO
+     @GetMapping("/menuAdmMorador")
+    public ModelAndView pageMenuAdmMorador(){
+        ModelAndView view = new ModelAndView("menuAdmMorador");
+        return view;
+    }
+    
+    
+    
     
 
 }

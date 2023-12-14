@@ -17,17 +17,17 @@
 
     <div class=" m-auto d-flex  login rounded-5 col-xl-6 ">
         <div class="d-inline-flex justify-content-center align-items-center">
-          <img class="cadeado col-md-6 w-100 h-50" src="../img/iconErro.png" alt="cadeado">
+          <img class="cadeado col-md-6 w-100 h-50" th:src="@{/images/iconErro.png}" alt="iconErro">
         </div>
              
-        <form th:action="@{/login}" method="POST" th:object="${erro}" class="col-md-8 text-white p-5 ">
+        <form th:action="@{/login}" method="GET" class="col-md-8 text-white p-5 ">
             <div class="mb-3">
               <label class="form-label">Usuário</label>
-              <input type="text" th:field="${erro.login}" class="form-control" id="user" required>
+              <input type="text"  class="form-control" id="user">
             </div>
             <div class="mb-3">
               <label class="form-label">Senha</label>
-              <input type="password" th:field="${erro.senha}" class="form-control" id="senha" required>
+              <input type="password" class="form-control" id="senha">
             </div>
             <div class="mb-3 form-check">
                 <!--
@@ -35,9 +35,9 @@
               <label class="form-check-label">esqueceu a senha</label>
                 -->
             </div>
-            <button type="submit" class="btn btn-primary w-100">retornar ao Login</button>
+            <button th:if="${error}" type="submit" class="btn btn-primary w-100">retornar ao Login</button>
             <br><br>
-            <h4 class="menssagem-error">usuário ou senha inválidos</h4>
+            <h4  class="menssagem-error">usuário ou senha inválidos</h4>
           </form>
           
     
