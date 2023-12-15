@@ -58,7 +58,7 @@ public class Morador extends PessoaFisica{
     public Morador() {
  
     }
-    /*
+    
     public Integer getId() {
         return id;
     }
@@ -77,7 +77,7 @@ public class Morador extends PessoaFisica{
     public void registrarTipoMorador(String tipo){
         this.tipo=tipo;
     }
-   */
+   
     @Override
     public void mostrarDados() {
             
