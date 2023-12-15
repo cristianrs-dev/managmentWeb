@@ -1,16 +1,18 @@
 package com.pi.manag.entitie;
 
-import jakarta.persistence.Transient;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 
-
+@Data
+@EqualsAndHashCode(callSuper = true)
 public abstract class PessoaFisica extends Pessoa {
-    private char sexo;
+    private String sexo;
     private String rg;
     private String cpf;
 
 
-    public PessoaFisica(char sexo, String rg, String nome) {
+    public PessoaFisica(String sexo, String rg, String nome) {
         super(nome);
         this.sexo = sexo;
         this.rg=rg;
@@ -24,11 +26,11 @@ public abstract class PessoaFisica extends Pessoa {
     public PessoaFisica() {
     }
     
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 

@@ -20,7 +20,7 @@ public class Secretaria extends PessoaFisica{
     private int id;
     private String observacao;
 
-    public Secretaria(int id, char sexo, String rg, String nome) {
+    public Secretaria(int id, String sexo, String rg, String nome) {
         super(sexo, rg, nome);
         this.id = id;
     }

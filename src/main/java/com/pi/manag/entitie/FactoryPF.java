@@ -11,7 +11,7 @@ public class FactoryPF extends FactoryPessoaFisica{
     
     
     @Override
-    public Pessoa getPessoaFisica(byte op,int id,String nome, char sexo, String rg) {
+    public Pessoa getPessoaFisica(byte op,int id,String nome, String sexo, String rg) {
         switch(op){
             case 1:
                 return new Morador(id, sexo, rg, nome);

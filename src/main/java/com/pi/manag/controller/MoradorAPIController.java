@@ -28,17 +28,19 @@ public class MoradorAPIController {
      List<Morador> moradores = service.getAllMoradores();
      return new ResponseEntity<>(moradores,HttpStatus.OK);
     }
+    
     @GetMapping("/pesquisar/{id}")
     public ResponseEntity<Morador> getMoradorById(@PathVariable Integer id){
-        
         Morador morador = service.getMoradorId(id);
+       
         return new ResponseEntity<>(morador,HttpStatus.OK);
     }
     
+    
     @PostMapping("/adicionar")
     public ResponseEntity<Morador> addMorador(@RequestBody Morador morador){
-        var novoFilme = service.criarMorador(morador, morador.getVeiculo(), morador.getApartamento());
-        return new ResponseEntity<>(novoFilme, HttpStatus.CREATED);
+        var novoMorador = service.criarMorador(morador, morador.getVeiculo(), morador.getApartamento());
+        return new ResponseEntity<>(novoMorador, HttpStatus.CREATED);
     }
     
     @PutMapping("/atualizar/{id}")
@@ -50,7 +52,7 @@ public class MoradorAPIController {
     @DeleteMapping("/deletar/{id}")
     
     public ResponseEntity deletarMorador(@PathVariable Integer id){
-        service.deletarFilme(id);
+        service.deletarMorador(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

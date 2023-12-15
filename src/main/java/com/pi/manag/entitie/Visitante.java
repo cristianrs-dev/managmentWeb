@@ -17,7 +17,7 @@ public class Visitante extends PessoaFisica{
      @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    public Visitante(int id, char sexo, String rg, String nome) {
+    public Visitante(int id, String sexo, String rg, String nome) {
         super(sexo, rg, nome);
         this.id = id;
     }

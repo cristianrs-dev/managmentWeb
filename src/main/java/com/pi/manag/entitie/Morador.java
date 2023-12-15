@@ -12,16 +12,17 @@ import lombok.EqualsAndHashCode;
 
 
 
+
 @Data
 @Entity
 @Table(name="Morador")
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 public class Morador extends PessoaFisica{
      @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String tipo;
-    @ManyToOne
+   @ManyToOne
     @JoinColumn(name = "idApartamento")
     private Apartamento apartamento;
     @ManyToOne
@@ -38,13 +39,13 @@ public class Morador extends PessoaFisica{
     private Visitante visita;
     
     
-    public Morador(int id, Veiculo veiculo, char sexo, String rg, String nome) {
+    public Morador(Integer id, Veiculo veiculo, String sexo, String rg, String nome) {
         super(sexo, rg, nome);
         this.id = id;
         this.veiculo = veiculo;
     }
 
-    public Morador(int id, char sexo, String rg, String nome) {
+    public Morador(int id, String sexo, String rg, String nome) {
         super(sexo, rg, nome);
         this.id = id;
     }
@@ -58,11 +59,11 @@ public class Morador extends PessoaFisica{
  
     }
     /*
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -76,49 +77,7 @@ public class Morador extends PessoaFisica{
     public void registrarTipoMorador(String tipo){
         this.tipo=tipo;
     }
-    
-    public void cadastrarApartamento(int id, int numeroApartamento, int qtdQuarto, int andar, float valor){
-        apartamento = new Apartamento(id, numeroApartamento, qtdQuarto, andar, valor);
-        apartamento.setId(id);
-        apartamento.setNumeroApartamento(numeroApartamento);
-        apartamento.setQtdQuarto(qtdQuarto);
-        apartamento.setAndar(andar);
-        apartamento.setValor(valor);
-    }
-    public void registrarCondomino(String nome, String cnpj){
-        condominio = new Condominio(nome, cnpj);
-        condominio.setNome(nome);
-        condominio.setCnpj(cnpj);
-    }
-    public void cadastrarSecretaria(int id,String nome, char sexo, String rg){
-        secretaria = new Secretaria(id, sexo, rg, nome);
-        secretaria.setId(id);
-        secretaria.setNome(nome);
-        secretaria.setSexo(sexo);
-        secretaria.setRg(rg);
-    }
-    public void cadastrarVeiculo(int idVeiculo,String tipo, String modelo, String placa, String cor){
-        veiculo = new Veiculo(idVeiculo, tipo, modelo, placa, cor);
-        veiculo.setId(idVeiculo);
-        veiculo.setTipo(tipo);
-        veiculo.setModelo(modelo);
-        veiculo.setPlaca(placa);
-        veiculo.setCor(cor);
-        
-    }
-    public void cadastrarVisita(int idVisita,String nome, char sexo, String rg){
-        visita = new Visitante(id, sexo, rg, nome);
-        visita.setId(idVisita);
-        visita.setNome(nome);
-        visita.setSexo(sexo);
-        visita.setRg(rg);
-    }
-
-    public void mostrarMorador(){
-            System.out.println("Morador:");
-            System.out.println("matricula:"+this.getId()+" nome:.."+this.getNome());
-    }*/
-    
+   */
     @Override
     public void mostrarDados() {
             

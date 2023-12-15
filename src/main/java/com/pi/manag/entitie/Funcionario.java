@@ -28,12 +28,12 @@ public class Funcionario extends PessoaFisica{
     @JoinColumn(name = "idCondominio")
     private Condominio empregador;
 
-    public Funcionario(int id, char sexo, String rg, String nome) {
+    public Funcionario(int id, String sexo, String rg, String nome) {
         super(sexo, rg, nome);
         this.id = id;
     }
 
-    public Funcionario(int id, Cargo cargo, float salario, char sexo, String rg, String nome) {
+    public Funcionario(int id, Cargo cargo, float salario, String sexo, String rg, String nome) {
         super(sexo, rg, nome);
         this.id = id;
         this.cargo = cargo;

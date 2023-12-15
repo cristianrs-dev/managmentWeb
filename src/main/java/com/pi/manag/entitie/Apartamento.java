@@ -13,11 +13,11 @@ import lombok.EqualsAndHashCode;
 @Data
 @Entity
 @Table(name="Apartamento")
-@EqualsAndHashCode(callSuper = false)
+//@EqualsAndHashCode(callSuper = false)
 public class Apartamento {
     @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     private int numeroApartamento;
     private int qtdQuarto;
     private int andar;
