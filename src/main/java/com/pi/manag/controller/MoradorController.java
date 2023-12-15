@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MoradorController {
     @Autowired
     MoradorService service;
-    
+    /*CADASTRO MORADOR*/
     @GetMapping("/cadMorador")
     public String pageCadastroMorador(Model model){
         //Morador morador = new Morador();
@@ -22,5 +22,15 @@ public class MoradorController {
         model.addAttribute("apartamento", new Apartamento());
         model.addAttribute("veiculo", new Veiculo());
         return "cadMorador";
+    }
+    
+    /*ATUALIZAR MORADOR*/
+    @GetMapping("/atualizaMorador")
+    public String pageAtualizaCadMorador(Model model){
+        //Morador morador = new Morador();
+        model.addAttribute("morador", new Morador());
+        model.addAttribute("apartamento", new Apartamento());
+        model.addAttribute("veiculo", new Veiculo());
+        return "atualizaMorador";
     }
 }

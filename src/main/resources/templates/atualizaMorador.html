@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/responsivo.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/responsivo.css}"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
    
@@ -22,17 +23,17 @@
             <div id="menu-mobile" class="menu-adm-mobile">
                 <div>
                     <a href="novoMorador.html">
-                        <img class="icone" src="../img/iconCtrlNovoMorador.png" alt="iconeAdm">
+                        <img class="icone" th:src="@{/images/iconCtrlNovoMorador.png}" alt="iconeAdm">
                     </a>
                 </div>
                 <div>
                     <a href="atualizaMorador.html">
-                        <img class="icone" src="../img/iconUpdateCadastro.png" alt="iconeMorador">
+                        <img class="icone" th:src="@{/images/iconUpdateCadastro.png}" alt="iconeMorador">
                     </a>
                 </div>
                 <div>
                     <a href="consultaMorador.html">
-                        <img class="icone" src="../img/iconCtrlConsultarCadastro.png" alt="iconeAdm">
+                        <img class="icone" th:src="@{/images/iconCtrlConsultarCadastro.png}" alt="iconeAdm">
                     </a>
                 </div>
             </div>
@@ -40,61 +41,87 @@
                 <div class="menu-adm">
                     <div>
                         <a href="novoMorador.html">
-                            <img class="icone" src="../img/iconCtrlNovoMorador.png" alt="iconeAdm">
+                            <img class="icone" th:src="@{/images/iconCtrlNovoMorador.png}" alt="iconeAdm">
                         </a>
                     </div>
                     <div>
                         <a href="atualizaMorador.html">
-                            <img class="icone" src="../img/iconUpdateCadastro.png" alt="iconeMorador">
+                            <img class="icone" th:src="@{/images/iconUpdateCadastro.png}" alt="iconeMorador">
                         </a>
                     </div>
                     <div>
                         <a href="consultaMorador.html">
-                            <img class="icone" src="../img/iconCtrlConsultarCadastro.png" alt="iconeAdm">
+                            <img class="icone" th:src="@{/images/iconCtrlConsultarCadastro.png}" alt="iconeAdm">
                         </a>
                     </div>
                 </div>
 
                 <div class="container-painel">
                     <div class="painel-menu" >
-                        <form id="validaForms">
+                        <form id="validaForms" th:object="${morador}" method="POST" >
                             <div class="mb-3">
                                 <label for="matricula" class="form-label text-white">Matricula</label>
-                                <input type="text" class="form-control" id="matricula" name = "matricula" required> 
+                                <input th:field="${morador.id}" type="text" class="form-control" id="matricula" name = "matricula" required> 
                                 <button type="submit" class="btn btn-primary">Pesquisar</button>
                                 <br>
 
+                                <div class="mb-3">
                                 <label for="name" class="form-label text-white">Nome Completo</label>
-                                <input type="text" class="form-control" id="name" nome = " nome" required pattern="[a-z]{1,20}$">
+                                <input th:field="${morador.nome}" type="text"  class="form-control" id="nome" name = " nome" required pattern="[a-z]{1,20}$">
+                                
+                                <select th:field="${morador.rg}" name="documento"  id="documento" required>
+                                    <option th:selected="${morador.rg == rg}" value="rg">RG</option>
+                                    <option th:selected="${morador.cpf == cpf}" value="cpf">CPF</option>
+                                </select><label for="documento" class="form-label text-white"></label>
+                                <input th:field="${morador.rg}" type="text"  class="form-control" id="rg" name = "rg" >
                                 <br>
-                                <select name="documento" id="documento" required>
-                                    <option value="">RG</option>
-                                    <option value="">CPF</option>
-                                </select>
-                                <br><br>
-                                <select name="genero" id="sexo" required>
-                                    <option value="">Masculino</option>
-                                    <option value="">Feminino</option>
-                                </select>
-                                <br><br>
-                                <label for="contato" class="form-label text-white">Contato</label>
-                                <input type="text" class="form-control" id="contato" name="contato" required>
-
-                                <label for="veiculo" class="form-label text-white">Veículo</label>
+                                    <label for="name" class="form-label text-white">sexo</label>
+                                <select th:field="${morador.sexo}" name="genero"  id="sexo" required>
+                                    <option th:selected="${morador.sexo == m }" value="m">Masculino</option>
+                                    <option th:selected="${morador.sexo == f }" value="f">Feminino</option>
+                                </select><label for="genero" class="form-label"></label>
                                 <br>
-                                <select name="veiculo" id="transporte">
-                                    <option value="">Carro</option>
-                                    <option value="">Moto</option>
+                                     <label for="name" class="form-label text-white">tipo de morador</label>
+                                <select th:field="${morador.tipo}" name="titular"  id="titular" required>
+                                    <option th:selected="${morador.tipo == 'proprietario'}" value="proprietario">proprietario</option>
+                                    <option th:selected="${morador.rg == 'inquilino'}" value="inquilino">inquilino</option>
+                                </select><label for="genero" class="form-label"></label>
+                                <br>
+                                 
+                                <label for="veiculo" class="form-label  text-white">Veículo</label>
+                                <br>
+                                <select th:field="${veiculo.tipo}" name="veiculo" id="veiculo">
+                                    <option th:selected="${veiculo.tipo == 'carro'}" value="carro">Carro</option>
+                                    <option th:selected="${veiculo.tipo == 'moto'}" value="moto">Moto</option>
                                 </select>
                                 <br>
-                                <label for="modelo" class="form-label text-white">Modelo</label>
-                                <input type="text" class="form-control" id="modelo" name = "modelo" required>
+                                <label for="modelo" class="form-label  text-white">Modelo</label>
+                                <input th:field="${veiculo.modelo}" type="text" class="form-control" id="modelo" name = "modelo" required>
 
                                 <label for="placa" class="form-label text-white">Placa</label>
-                                <input type="number" class="form-control" id="placa" name = "placa" required>
+                                <input th:field="${veiculo.placa}" type="number" class="form-control" id="placa" name = "placa" required>
 
                                 <label for="cor" class="form-label text-white">Cor</label>
-                                <input type="text" class="form-control" id="cor" name = "cor" required>
+                                <input th:field="${veiculo.cor}" type="text" class="form-control" id="cor" name = "cor" required>
+                                    <br>
+                                        <label for="cor" class="form-label text-white">numero apartamento</label>
+                                <select th:field="${apartamento.numeroApartamento}" name="apartamento" id="apartamento" required>
+                                    <option th:selected="${apartamento.numeroApartamento == 101 }" value="101">101</option>
+                                    <option th:selected="${apartamento.numeroApartamento == 102 }" value="102">102</option>
+                                    <option th:selected="${apartamento.numeroApartamento == 103 }" value="103">103</option>
+                                    <option th:selected="${apartamento.numeroApartamento == 104 }" value="104">104</option>
+                                    <option th:selected="${apartamento.numeroApartamento == 105 }" value="105">105</option>
+                                    <option th:selected="${apartamento.numeroApartamento == 106 }" value="106">106</option>
+                                    <option th:selected="${apartamento.numeroApartamento == 107 }" value="107">107</option>
+                                    <option th:selected="${apartamento.numeroApartamento == 108 }" value="108">108</option>
+                                    <option th:selected="${apartamento.numeroApartamento == 109 }" value="109">109</option>
+                                    <option th:selected="${apartamento.numeroApartamento == 110 }" value="110">110</option>
+                                    <option th:selected="${apartamento.numeroApartamento == 111 }" value="111">111</option>
+                                    <option th:selected="${apartamento.numeroApartamento == 112 }" value="112">112</option>
+                                </select><label for="genero" class="form-label"></label>
+                                <br>
+                                <label for="cor" class="form-label text-white">Andar</label>
+                                <input th:field="${apartamento.andar}" type="text" class="form-control" id="andar" name = "andar" required>
                             </div>
                             
                             <button type="submit" class="btn btn-primary">Salvar</button>
@@ -107,7 +134,9 @@
         
         
    </main>
-    <script src="../static/js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+            <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+          <script th:src="@{/js/script.js}"></script>
+          <script th:src="@{/js/validar.js}"></script>
+            <script src="static/js/script.js"></script>
 </body>
 </html>
