@@ -19,7 +19,7 @@ import lombok.EqualsAndHashCode;
 public class Funcionario extends PessoaFisica{
     @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     @ManyToOne
     @JoinColumn(name = "idCargo")
     private Cargo cargo;
