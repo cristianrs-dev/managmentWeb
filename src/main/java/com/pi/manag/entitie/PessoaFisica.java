@@ -1,8 +1,10 @@
 package com.pi.manag.entitie;
 
+import jakarta.persistence.Transient;
+
+
 
 public abstract class PessoaFisica extends Pessoa {
-  
     private char sexo;
     private String rg;
     private String cpf;

@@ -1,14 +1,29 @@
 package com.pi.manag.entitie;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 
+@Data
+@Entity
+@Table(name="Condominio")
+@EqualsAndHashCode(callSuper = false)
 public class Condominio extends PessoaJuridica{
+    @Id
+     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private PessoaFisica morador;
     private String endereco;
+    @ManyToOne
+    @JoinColumn(name = "idApartamento")
     private Apartamento apartamento;
-    private Espaco espaco;
-    private Documento documento;
+    //private Documento documento;
 
     public Condominio() {
     }
@@ -25,13 +40,9 @@ public class Condominio extends PessoaJuridica{
         this.id = id;
     }
 
-    public PessoaFisica getMorador() {
-        return morador;
-    }
+    
 
-    public void setMorador(PessoaFisica morador) {
-        this.morador = morador;
-    }
+    
 
     public String getEndereco() {
         return endereco;
@@ -49,23 +60,6 @@ public class Condominio extends PessoaJuridica{
         this.apartamento = apartamento;
     }
 
-    public Espaco getEspaco() {
-        return espaco;
-    }
-
-    public void setEspaco(Espaco espaco) {
-        this.espaco = espaco;
-    }
-
-    public Documento getDocumento() {
-        return documento;
-    }
-
-    public void setDocumento(Documento documento) {
-        this.documento = documento;
-    }
-    
-    
     @Override
     public void mostrarDados() {
         System.out.println("=====Registro Condominio======");

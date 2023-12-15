@@ -1,18 +1,28 @@
-package com.pi.manag.entitie;
+/*package com.pi.manag.entitie;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import lombok.Data;
 
 
 
-
+@Data
+@Entity
+@Table(name="Documento")
 public class Documento {
-    
+    @Id
+     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String tipo;
-    private LocalDate emissao;
-    private LocalDate lancamento;
+     //@Type(type = "org.hibernate.type.LocalDateType");
+    private String emissao;
+    private String lancamento;
     
     
     public Documento(int idDocumento, String tipo) {
@@ -22,7 +32,7 @@ public class Documento {
 
     public Documento() {
     }
-    
+    /*
     public int getId() {
         return id;
     }
@@ -73,4 +83,4 @@ public class Documento {
         System.out.println(this.lancamento.format(padrao));
     }
     
-}
+}*/

@@ -1,5 +1,8 @@
 package com.pi.manag.entitie;
 
+import jakarta.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class Pessoa{
     
    private String nome;

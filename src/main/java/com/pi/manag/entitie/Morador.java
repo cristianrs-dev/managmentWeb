@@ -8,34 +8,36 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 
 
 @Data
 @Entity
 @Table(name="Morador")
+@EqualsAndHashCode(callSuper = false)
 public class Morador extends PessoaFisica{
      @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String tipo;
     @ManyToOne
-    @JoinColumn(name = "apartamento_id")
+    @JoinColumn(name = "idApartamento")
     private Apartamento apartamento;
     @ManyToOne
-    @JoinColumn(name = "condominio_id")
+    @JoinColumn(name = "idCondominio")
     private Condominio condominio;
     @ManyToOne
-    @JoinColumn(name = "secretaria_id")
+    @JoinColumn(name = "idSecretaria")
     private Secretaria secretaria;
     @ManyToOne
-    @JoinColumn(name = "veiculo_id")
+    @JoinColumn(name = "idVeiculo")
     private Veiculo veiculo;
     @ManyToOne
-    @JoinColumn(name = "visita_id")
+    @JoinColumn(name = "idVisita")
     private Visitante visita;
     
-    /*
+    
     public Morador(int id, Veiculo veiculo, char sexo, String rg, String nome) {
         super(sexo, rg, nome);
         this.id = id;
@@ -128,7 +130,7 @@ public class Morador extends PessoaFisica{
             System.out.println("Cpf:.."+this.getCpf());     
     }
     
-    */
+    
     
     
 }

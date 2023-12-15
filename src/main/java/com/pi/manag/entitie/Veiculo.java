@@ -1,12 +1,28 @@
 package com.pi.manag.entitie;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name="Veiculo")
 public class Veiculo {
+    @Id
+     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String tipo;
     private String modelo;
     private String placa;
     private String cor;
 
+    public Veiculo() {
+    }
+
+    
     public Veiculo(int idVeiculo,String tipo, String modelo, String placa, String cor) {
         this.id=idVeiculo;
         this.tipo = tipo;
@@ -14,7 +30,7 @@ public class Veiculo {
         this.placa = placa;
         this.cor = cor;
     }
-
+/*
     public int getId() {
         return id;
     }
@@ -65,6 +81,6 @@ public class Veiculo {
             System.out.println("Cor:.."+this.getModelo());
         
     }
-    
+    */
     
 }

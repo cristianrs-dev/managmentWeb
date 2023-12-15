@@ -1,12 +1,29 @@
 package com.pi.manag.entitie;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@Data
+@Entity
+@Table(name="Apartamento")
+@EqualsAndHashCode(callSuper = false)
 public class Apartamento {
+    @Id
+     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int numeroApartamento;
     private int qtdQuarto;
     private int andar;
     private float valor;
+    @ManyToOne
+    @JoinColumn(name = "idCondominio")
     private Condominio endereco;
     
     public Apartamento(int id, int numeroApartamento, int qtdQuarto, int andar, float valor) {
@@ -19,7 +36,7 @@ public class Apartamento {
 
     public Apartamento() {
     }
-
+/*
     public int getId() {
         return id;
     }
@@ -60,7 +77,7 @@ public class Apartamento {
         this.valor = valor;
     }
     
-
+*/
     public void registrarEnderecoApartamento(String nome, String cnpj){
         endereco = new Condominio(nome, cnpj);
         endereco.setNome(nome);
