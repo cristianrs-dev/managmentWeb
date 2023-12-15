@@ -19,7 +19,7 @@ import lombok.EqualsAndHashCode;
 public class Morador extends PessoaFisica{
      @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     private String tipo;
     @ManyToOne
     @JoinColumn(name = "idApartamento")
@@ -57,7 +57,7 @@ public class Morador extends PessoaFisica{
     public Morador() {
  
     }
-    
+    /*
     public int getId() {
         return id;
     }
@@ -117,7 +117,7 @@ public class Morador extends PessoaFisica{
     public void mostrarMorador(){
             System.out.println("Morador:");
             System.out.println("matricula:"+this.getId()+" nome:.."+this.getNome());
-    }
+    }*/
     
     @Override
     public void mostrarDados() {

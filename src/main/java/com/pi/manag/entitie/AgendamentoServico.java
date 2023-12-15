@@ -63,7 +63,7 @@ public class AgendamentoServico{
         DateTimeFormatter  padrao = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         System.out.print("Servico autorizado para data:..");
         System.out.println(this.data.format(padrao));
-        morador.mostrarMorador();
+       // morador.mostrarMorador();
         empresa.mostrarEmpresa();
     }
 }

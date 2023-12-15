@@ -62,7 +62,7 @@ public class ReservaEspaco{
         espaco.mostrarDadosEspaco();
         System.out.print("reservado para data:..");
         System.out.println(this.data.format(padrao));
-        morador.mostrarMorador();
+       // morador.mostrarMorador();
     }
 
    
