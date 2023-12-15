@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/responsivo.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/responsivo.css}"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
    
@@ -22,17 +22,17 @@
             <div id="menu-mobile" class="menu-adm-mobile">
                 <div>
                     <a href="#">
-                        <img class="icone" src="../img/iconCtrlNovoColaborador.png" alt="iconeAdm">
+                        <img class="icone" th:src="@{/images/iconCtrlNovoColaborador.png}" alt="iconeAdm">
                     </a>
                 </div>
                 <div>
                     <a href="#">
-                        <img class="icone" src="../img/iconCtrlAtulizarCadFuncionario.png" alt="iconeMorador">
+                        <img class="icone" th:src="@{/images/iconCtrlAtulizarCadFuncionario.png}" alt="iconeMorador">
                     </a>
                 </div>
                 <div>
                     <a href="#">
-                        <img class="icone" src="../img/" alt="iconeAdm">
+                        <img class="icone" th:src="@{/images/}" alt="iconeAdm">
                     </a>
                 </div>
             </div>
@@ -40,45 +40,57 @@
                 <div class="menu-adm">
                     <div>
                         <a href="#">
-                            <img class="icone" src="../img/iconCtrlNovoColaborador.png" alt="iconeAdm">
+                            <img class="icone" th:src="@{/images/iconCtrlNovoColaborador.png}" alt="iconeAdm">
                         </a>
                     </div>
                     <div>
                         <a href="atualizaMorador.html">
-                            <img class="icone" src="../img/iconUpdateCadastro.png" alt="iconeMorador">
+                            <img class="icone" th:src="@{/images/iconUpdateCadastro.png}" alt="iconeMorador">
                         </a>
                     </div>
                     <div>
                         <a href="consultaMorador.html">
-                            <img class="icone" src="../img/iconCtrlConsultarCadastro.png" alt="iconeAdm">
+                            <img class="icone" th:src="@{/images/iconCtrlConsultarCadastro.png}" alt="iconeAdm">
                         </a>
                     </div>
                 </div>
 
                 <div class="container-painel">
                     <div class="painel-menu" >
-                        <form id="validaForms">
+                        <form id="validaForms" th:object="${funcionario}" method="POST" >
                             <div class="mb-3">
+                                <label for="matricula" class="form-label text-white">Matricula</label>
+                                <input th:field="${funcionario.id}" type="text" class="form-control" id="matricula" name = "matricula" required> 
+                                <button type="submit" class="btn btn-primary">Pesquisar</button>
+                                <br>
                                 <label for="name" class="form-label  text-white">Nome Completo</label>
-                                <input type="text" class="form-control" id="nome" name = "nome" required pattern="[a-z]{1,20}$">
+                                <input type="text" class="form-control" id="nome" name = " nome" required pattern="[a-z]{1,20}$">
                                 <br>
-                                <select name="documento" id="documento" required>
-                                    <option value="">RG</option>
-                                    <option value="">CPF</option>
+                                    <label for="name" class="form-label  text-white">documento</label>
+                                <select th:field="${funcionario.rg}" name="documento" id="documento" required>
+                                    <option th:selected="${funcionario.rg == rg}" value="rg">RG</option>
+                                    <option th:selected="${funcionario.cpf == cpf}" value="rg">CPF</option>
                                 </select><label for="documento" class="form-label  text-white"></label>
-                                <input type="text" class="form-control" id="contact" name="contact" required>
+                                <input type="text" class="form-control" id="documento" name="documento" required>
                                 <br>
-                                <select name="genero" id="sexo" required>
-                                    <option value="">Masculino</option>
-                                    <option value="">Feminino</option>
+                                    <label for="name" class="form-label  text-white">sexo</label>
+                                <select th:field="${funcionario.sexo}" name="genero" id="sexo" required>
+                                    <option th:selected="${funcionario.sexo == m}" value="m">Masculino</option>
+                                    <option th:selected="${funcionario.sexo == f}" value="f">Feminino</option>
                                 </select><label for="genero" class="form-label text-white"></label>
                                 <br>
                                 <label for="contato" class="form-label text-white">Cargo</label>
-                                <input type="text" class="form-control" id="cargo" name="cargo" required>
+                                <select th:field="${cargo.funcao}" name="genero" id="sexo" required>
+                                    <option th:selected="${cargo.funcao == 'servicos gerais'}" value="servicos gerais">serviços gerais</option>
+                                    <option th:selected="${cargo.funcao == 'aux administrativo'}" value="aux administrativo">aux administrativo</option>
+                                    <option th:selected="${cargo.funcao == 'administrador'}" value="administrador">administrador</option>
+                                    <option th:selected="${cargo.funcao == 'manutencao'}" value="manutencao">manutenção</option>
+                                    <option th:selected="${cargo.funcao == 'supervisor'}" value="supervisor">administrador</option>
+                                </select><label for="genero" class="form-label text-white"></label>
 
                                 <br>
                                 <label for="modelo" class="form-label text-white">Salario</label>
-                                <input type="text" class="form-control" id="salario" name = "salario" required>
+                                <input th:field="${cargo.salario}" type="text" class="form-control" id="salario" name = "salario" required>
 
                                 
                             </div>
@@ -93,7 +105,9 @@
         
         
    </main>
-    <script src="../static/js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+          <script th:src="@{/js/script.js}"></script>
+          <script th:src="@{/js/validar.js}"></script>
+    <script src="static/js/script.js"></script>
 </body>
 </html>
