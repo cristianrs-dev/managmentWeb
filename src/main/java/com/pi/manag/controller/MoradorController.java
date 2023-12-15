@@ -32,7 +32,7 @@ public class MoradorController {
         model.addAttribute("veiculo", new Veiculo());
         return "atualizaMorador";
     }
-    
+    /*TELA CONSULTA MORADOR*/
     @GetMapping("/consultaMorador")
     public String pageConsultaMorador(Model model){
         model.addAttribute("morador", new Morador());

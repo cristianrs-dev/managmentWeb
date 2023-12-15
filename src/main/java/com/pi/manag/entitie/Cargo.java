@@ -1,15 +1,27 @@
 package com.pi.manag.entitie;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-
+@Data
+@Entity
+@Table(name="Cargo")
+@EqualsAndHashCode(callSuper = false)
 public class Cargo{
+    @Id
+     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String funcao;
     private float salario;
-    private LocalDate admissao;
-    private LocalDate demissao;
+    //private LocalDate admissao;
+   // private LocalDate demissao;
     
     public Cargo(int id, String Funcao, float salario) {
         this.id = id;
@@ -19,7 +31,7 @@ public class Cargo{
 
     public Cargo() {
     }
-
+/*
     public int getId() {
         return id;
     }
@@ -82,6 +94,6 @@ public class Cargo{
         System.out.print("cod:."+this.getId());
         System.out.print(" Funcao:."+this.getFuncao());
         System.out.println(" Salário:R$"+this.getSalario());
-    }
+    }*/
     
 }

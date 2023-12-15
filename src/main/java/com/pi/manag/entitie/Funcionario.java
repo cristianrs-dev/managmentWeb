@@ -1,12 +1,31 @@
 package com.pi.manag.entitie;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 
 
+@Data
+@Entity
+@Table(name="Funcionario")
+@EqualsAndHashCode(callSuper = false)
 public class Funcionario extends PessoaFisica{
+    @Id
+     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "idCargo")
     private Cargo cargo;
     private float salario;
+    @ManyToOne
+    @JoinColumn(name = "idCondominio")
     private Condominio empregador;
 
     public Funcionario(int id, char sexo, String rg, String nome) {
@@ -23,7 +42,7 @@ public class Funcionario extends PessoaFisica{
    
     public Funcionario() {
     }
-
+/*
     public int getId() {
         return id;
     }
@@ -52,7 +71,7 @@ public class Funcionario extends PessoaFisica{
         empregador = new Condominio(nome, cnpj);
         empregador.setNome(nome);
         empregador.setCnpj(cnpj);
-    }
+    }*/
     @Override
     public void mostrarDados() {
             System.out.println("---------Dados Funcionario----------");
