@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+     <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/responsivo.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/responsivo.css}"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
    
@@ -22,17 +23,17 @@
             <div id="menu-mobile" class="menu-adm-mobile">
                 <div>
                     <a href="novoMorador.html">
-                        <img class="icone" src="../img/iconCtrlNovoMorador.png" alt="iconeAdm">
+                        <img class="icone" th:src="@{/images/iconCtrlNovoMorador.png}" alt="iconeAdm">
                     </a>
                 </div>
                 <div>
                     <a href="atualizaMorador.html">
-                        <img class="icone" src="../img/iconUpdateCadastro.png" alt="iconeMorador">
+                        <img class="icone" th:src="@{/images/iconUpdateCadastro.png}" alt="iconeMorador">
                     </a>
                 </div>
                 <div>
                     <a href="consultaMorador.html">
-                        <img class="icone" src="../img/iconCtrlConsultarCadastro.png" alt="iconeAdm">
+                        <img class="icone" th:src="@{/images/iconCtrlConsultarCadastro.png}" alt="iconeAdm">
                     </a>
                 </div>
             </div>
@@ -40,29 +41,37 @@
                 <div class="menu-adm">
                     <div>
                         <a href="novoMorador.html">
-                            <img class="icone" src="../img/iconCtrlNovoMorador.png" alt="iconeAdm">
+                            <img class="icone" th:src="@{/images/iconCtrlNovoMorador.png}" alt="iconeAdm">
                         </a>
                     </div>
                     <div>
                         <a href="atualizaMorador.html">
-                            <img class="icone" src="../img/iconUpdateCadastro.png" alt="iconeMorador">
+                            <img class="icone" th:src="@{/images/iconUpdateCadastro.png}" alt="iconeMorador">
                         </a>
                     </div>
                     <div>
                         <a href="consultaMorador.html">
-                            <img class="icone" src="../img/iconCtrlConsultarCadastro.png" alt="iconeAdm">
+                            <img class="icone" th:src="@{/images/iconCtrlConsultarCadastro.png}" alt="iconeAdm">
                         </a>
                     </div>
                 </div>
 
                 <div class="container-painel">
                     <div class="painel-menu" >
-                        <form id="validaForms">
+                        <form id="validaForms" th:object="${morador}" method="POST" >
                             <div class="mb-3">
                                 <label for="matricula" class="form-label  text-white">Matricula</label>
-                                <input type="text" class="form-control" id="matricula" name = "matricula" required> 
+                                <input th:field="${morador.id}" type="text" class="form-control" id="matricula" name = "matricula" required> 
                                 <button type="submit" class="btn btn-primary">Pesquisar</button>
                             </div>
+                            <span class="text-white" th:text="morador"></span><br>
+                            <input th:field="${morador.nome}" class="text-white"/>
+                            <br>
+                            <span class="text-white" th:text="apartamento"></span><br>
+                            <input th:field="${apartamento.numeroApartamento}" class="text-white"/>
+                            <br>
+                            <span class="text-white" th:text="veiculo"></span><br>
+                            <input th:field="${veiculo.placa}" class="text-white"/>
                         </form>
                        
                     </div>
@@ -72,7 +81,9 @@
         
         
    </main>
-    <script src="../static/js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+   <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+          <script th:src="@{/js/script.js}"></script>
+          <script th:src="@{/js/validar.js}"></script>
+    <script src="static/js/script.js"></script>
 </body>
 </html>

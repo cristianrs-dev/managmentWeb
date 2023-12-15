@@ -27,10 +27,17 @@ public class MoradorController {
     /*ATUALIZAR MORADOR*/
     @GetMapping("/atualizaMorador")
     public String pageAtualizaCadMorador(Model model){
-        //Morador morador = new Morador();
         model.addAttribute("morador", new Morador());
         model.addAttribute("apartamento", new Apartamento());
         model.addAttribute("veiculo", new Veiculo());
         return "atualizaMorador";
+    }
+    
+    @GetMapping("/consultaMorador")
+    public String pageConsultaMorador(Model model){
+        model.addAttribute("morador", new Morador());
+        model.addAttribute("apartamento", new Apartamento());
+        model.addAttribute("veiculo", new Veiculo());
+        return "consultaMorador";
     }
 }
