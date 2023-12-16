@@ -13,12 +13,12 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
-@Table(name="Condominio")
-@EqualsAndHashCode(callSuper = false)
+@Table(name="condominio")
+@EqualsAndHashCode(callSuper = true)
 public class Condominio extends PessoaJuridica{
     @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     private String endereco;
     @ManyToOne
     @JoinColumn(name = "idApartamento")
@@ -28,21 +28,28 @@ public class Condominio extends PessoaJuridica{
     public Condominio() {
     }
 
-    public Condominio(String nome, String cnpj) {
-        super("Village", "100000088877/1515");
+    public Condominio(Integer id, String endereco, Apartamento apartamento, String nome, String cnpj) {
+        super(nome, cnpj);
+        this.id = id;
+        this.endereco = endereco;
+        this.apartamento = apartamento;
     }
 
-    public int getId() {
+    public Condominio(Integer id, String endereco, Apartamento apartamento) {
+        this.id = id;
+        this.endereco = endereco;
+        this.apartamento = apartamento;
+    }
+
+   
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
-
-    
-
-    
 
     public String getEndereco() {
         return endereco;

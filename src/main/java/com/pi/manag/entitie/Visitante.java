@@ -10,8 +10,8 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
-@Table(name="Visitante")
-@EqualsAndHashCode(callSuper = false)
+@Table(name="visitante")
+@EqualsAndHashCode(callSuper = true)
 public class Visitante extends PessoaFisica{
      @Id
      @GeneratedValue(strategy = GenerationType.AUTO)

@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
-@Table(name="Cargo")
+@Table(name="cargo")
 @EqualsAndHashCode(callSuper = false)
 public class Cargo{
     @Id

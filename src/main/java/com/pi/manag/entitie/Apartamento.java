@@ -8,20 +8,22 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+
 
 @Data
 @Entity
-@Table(name="Apartamento")
-//@EqualsAndHashCode(callSuper = false)
+@Table(name="apartamento")
+
 public class Apartamento {
     @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    
     private int numeroApartamento;
     private int qtdQuarto;
     private int andar;
     private float valor;
+    
     @ManyToOne
     @JoinColumn(name = "idCondominio")
     private Condominio endereco;
@@ -78,11 +80,7 @@ public class Apartamento {
     }
     
 */
-    public void registrarEnderecoApartamento(String nome, String cnpj){
-        endereco = new Condominio(nome, cnpj);
-        endereco.setNome(nome);
-        endereco.setCnpj(cnpj);
-    }
+    
     
     public void mostrarApartamento(){
         

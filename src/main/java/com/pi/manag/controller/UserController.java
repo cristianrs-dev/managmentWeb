@@ -35,7 +35,7 @@ public class UserController {
         return "redirect:/menu"; // Redireciona para o menu se autenticado com sucesso
     } else {
         model.addAttribute("error", true);
-        return "redirect:/error"; // Redireciona para a página de erro se a autenticação falhar
+        return "redirect:/telaErro"; // Redireciona para a página de erro se a autenticação falhar
     }
     }
     //ESTE METODO EXIBE A PAGINA DE ERRO

@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
-@Table(name="Secretaria")
+@Table(name="secretaria")
 @EqualsAndHashCode(callSuper = false)
 public class Secretaria extends PessoaFisica{
     @Id

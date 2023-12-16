@@ -8,6 +8,7 @@ import com.pi.manag.repository.ApartamentoRepository;
 import com.pi.manag.repository.MoradorRepository;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +33,7 @@ public class MoradorService {
         return service.findAll();
     }
     public Morador getMoradorId(Integer Id) {
-        return service.findById(Id).orElse(null);
+       return service.findById(Id).orElse(null);
     }
     
     public void deletarMorador(Integer Id) {
@@ -49,19 +50,6 @@ public class MoradorService {
             return service.save(encontrado);
     }
     
-    /*criar um metodo que retorne nome apartamento e veiculo*/
-    public Apartamento getDadosMoradorById(Integer id){
-        Morador morador = getMoradorId(id);
-        //Integer idAp = 0;
-        Apartamento ap = new Apartamento();
-        List<Apartamento> apartamentos = serviceAp.findAll();
-        for(Apartamento apartamento : apartamentos){
-            if(apartamento.getId().equals(morador.getApartamento().getId())){
-                 ap = apartamento;
-                 morador.setApartamento(ap);
-            }
-        }
-        return ap;
-    }
+    
     
 }

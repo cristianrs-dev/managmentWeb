@@ -1,5 +1,6 @@
 package com.pi.manag.entitie;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,28 +16,65 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
-@Table(name="Morador")
+@Table(name="morador")
 @EqualsAndHashCode(callSuper = true)
 public class Morador extends PessoaFisica{
      @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String tipo;
-   @ManyToOne
-    @JoinColumn(name = "idApartamento")
+    //@ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="idApartamento")
     private Apartamento apartamento;
+    
     @ManyToOne
     @JoinColumn(name = "idCondominio")
     private Condominio condominio;
+    
     @ManyToOne
     @JoinColumn(name = "idSecretaria")
     private Secretaria secretaria;
+    
     @ManyToOne
     @JoinColumn(name = "idVeiculo")
     private Veiculo veiculo;
+    
     @ManyToOne
     @JoinColumn(name = "idVisita")
     private Visitante visita;
+
+    public Morador(Integer id, String tipo, Apartamento apartamento, Condominio condominio, Secretaria secretaria, Veiculo veiculo, Visitante visita, String sexo, String rg, String nome) {
+        super(sexo, rg, nome);
+        this.id = id;
+        this.tipo = tipo;
+        this.apartamento = apartamento;
+        this.condominio = condominio;
+        this.secretaria = secretaria;
+        this.veiculo = veiculo;
+        this.visita = visita;
+    }
+
+    public Morador(Integer id, String tipo, Apartamento apartamento, Condominio condominio, Secretaria secretaria, Veiculo veiculo, Visitante visita, String nome) {
+        super(nome);
+        this.id = id;
+        this.tipo = tipo;
+        this.apartamento = apartamento;
+        this.condominio = condominio;
+        this.secretaria = secretaria;
+        this.veiculo = veiculo;
+        this.visita = visita;
+    }
+
+    public Morador(Integer id, String tipo, Apartamento apartamento, Condominio condominio, Secretaria secretaria, Veiculo veiculo, Visitante visita) {
+        this.id = id;
+        this.tipo = tipo;
+        this.apartamento = apartamento;
+        this.condominio = condominio;
+        this.secretaria = secretaria;
+        this.veiculo = veiculo;
+        this.visita = visita;
+    }
     
     
     public Morador(Integer id, Veiculo veiculo, String sexo, String rg, String nome) {
@@ -58,7 +96,7 @@ public class Morador extends PessoaFisica{
     public Morador() {
  
     }
-    
+    /*
     public Integer getId() {
         return id;
     }
@@ -76,7 +114,7 @@ public class Morador extends PessoaFisica{
     }
     public void registrarTipoMorador(String tipo){
         this.tipo=tipo;
-    }
+    }*/
    
     @Override
     public void mostrarDados() {

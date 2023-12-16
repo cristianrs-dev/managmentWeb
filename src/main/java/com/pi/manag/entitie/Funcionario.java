@@ -14,8 +14,8 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
-@Table(name="Funcionario")
-@EqualsAndHashCode(callSuper = false)
+@Table(name="funcionario")
+@EqualsAndHashCode(callSuper = true)
 public class Funcionario extends PessoaFisica{
     @Id
      @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,6 +1,12 @@
 package com.pi.manag.entitie;
 
+import jakarta.persistence.MappedSuperclass;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
+@MappedSuperclass
 public abstract class PessoaJuridica extends Pessoa{
     private String cnpj;
 
