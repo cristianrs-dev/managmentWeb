@@ -26,9 +26,10 @@
     .icone-menu{
         display: block;
     }
+    
    
     .menu-adm-mobile{
-        display: inline;
+        display: none;
         position: absolute;
         background-color: #74b9ff;
         width: 300px;

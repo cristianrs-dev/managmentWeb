@@ -30,6 +30,13 @@ public class Veiculo {
         this.placa = placa;
         this.cor = cor;
     }
+    public Veiculo(String tipo, String modelo, String placa, String cor) {
+        this.tipo = tipo;
+        this.modelo = modelo;
+        this.placa = placa;
+        this.cor = cor;
+    }
+    
 /*
     public int getId() {
         return id;
@@ -82,5 +89,7 @@ public class Veiculo {
         
     }
     */
+
+    
     
 }

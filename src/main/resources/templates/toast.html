@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" th:href="@{/css/style.css}"/>
+        <link rel="stylesheet" th:href="@{/css/responsivo.css}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <button onclick="openPopup()">Abrir Pop-up</button>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <p>Conteúdo do Pop-up aqui.</p>
+        </div>
+    </div>
+        
+        
+        <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+          <script th:src="@{/js/script.js}"></script>
+          <script th:src="@{/js/validar.js}"></script>
+        <!--   <script src="static/js/script.js"></script>-->
+    </body>
+</html>

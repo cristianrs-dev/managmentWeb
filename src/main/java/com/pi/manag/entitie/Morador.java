@@ -28,19 +28,23 @@ public class Morador extends PessoaFisica{
     @JoinColumn(name="idApartamento")
     private Apartamento apartamento;
     
-    @ManyToOne
+    //@ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idCondominio")
     private Condominio condominio;
     
-    @ManyToOne
+    //@ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idSecretaria")
     private Secretaria secretaria;
     
-    @ManyToOne
+    //@ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idVeiculo")
     private Veiculo veiculo;
     
-    @ManyToOne
+    //@ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idVisita")
     private Visitante visita;
 
@@ -93,10 +97,32 @@ public class Morador extends PessoaFisica{
         this.id = id;
     }
 
+    public Morador(String tipo, Apartamento apartamento, Veiculo veiculo, String sexo, String rg, String nome) {
+        super(sexo, rg, nome);
+        this.tipo = tipo;
+        this.apartamento = apartamento;
+        this.veiculo = veiculo;
+    }
+
+    public Morador(String tipo, Apartamento apartamento, Veiculo veiculo, String nome) {
+        super(nome);
+        this.tipo = tipo;
+        this.apartamento = apartamento;
+        this.veiculo = veiculo;
+    }
+
+    public Morador(String tipo, Apartamento apartamento, Veiculo veiculo) {
+        this.tipo = tipo;
+        this.apartamento = apartamento;
+        this.veiculo = veiculo;
+    }
+    
+
     public Morador() {
  
     }
-    /*
+   
+    
     public Integer getId() {
         return id;
     }
@@ -114,7 +140,7 @@ public class Morador extends PessoaFisica{
     }
     public void registrarTipoMorador(String tipo){
         this.tipo=tipo;
-    }*/
+    }
    
     @Override
     public void mostrarDados() {

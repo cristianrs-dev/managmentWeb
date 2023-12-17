@@ -41,4 +41,6 @@ public class ApartamentoService {
             encontrado.setNumeroApartamento(apartamento.getNumeroApartamento());
             return service.save(encontrado);
     }
+    
+    
 }

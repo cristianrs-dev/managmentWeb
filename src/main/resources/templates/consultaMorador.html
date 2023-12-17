@@ -27,12 +27,12 @@
                     </a>
                 </div>
                 <div>
-                    <a th:href="@{/atualizaMorador.html}">
+                    <a th:href="@{/atualizaMorador}">
                         <img class="icone" th:src="@{/images/iconUpdateCadastro.png}" alt="iconeMorador">
                     </a>
                 </div>
                 <div>
-                    <a th:href="@{/consultaMorador.html}">
+                    <a th:href="@{/consultaMorador}">
                         <img class="icone" th:src="@{/images/iconCtrlConsultarCadastro.png}" alt="iconeAdm">
                     </a>
                 </div>
@@ -40,17 +40,17 @@
             <div class="painel">
                 <div class="menu-adm">
                     <div>
-                        <a th:href="@{/cadMorador.html}">
+                        <a th:href="@{/cadMorador}">
                             <img class="icone" th:src="@{/images/iconCtrlNovoMorador.png}" alt="iconeAdm">
                         </a>
                     </div>
                     <div>
-                        <a th:href="@{/atualizaMorador.html}">
+                        <a th:href="@{/atualizaMorador}">
                             <img class="icone" th:src="@{/images/iconUpdateCadastro.png}" alt="iconeMorador">
                         </a>
                     </div>
                     <div>
-                        <a th:href="@{/consultaMorador.html}">
+                        <a th:href="@{/consultaMorador}">
                             <img class="icone" th:src="@{/images/iconCtrlConsultarCadastro.png}" alt="iconeAdm">
                         </a>
                     </div>
@@ -75,13 +75,13 @@
                             <br>
                               <span class="text-white" th:text="tipo"></span><br>
                             <span th:text="${morador.tipo}" class="text-white"/><br>
-                                <!--
+                                
                             <span class="text-white" th:text="apartamento"></span><br>
-                            <input th:field="${apartamento.numeroApartamento}" class="text-white"/>
+                            <span th:text="${morador.apartamento.numeroApartamento}" class="text-white"/>
                             <br>
                             <span class="text-white" th:text="veiculo"></span><br>
-                            <input th:field="${veiculo.placa}" class="text-white"/>
-                                -->
+                            <span th:text="${morador.veiculo.placa}" class="text-white"/>
+                                
                         </form>
                        
                     </div>

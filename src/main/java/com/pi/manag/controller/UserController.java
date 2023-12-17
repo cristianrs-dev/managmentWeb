@@ -3,12 +3,14 @@ package com.pi.manag.controller;
 
 import com.pi.manag.entitie.User;
 import com.pi.manag.service.UserService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -26,22 +28,19 @@ public class UserController {
     }
     
     @PostMapping("/autenticar")
-    public String autentitcar(@RequestBody User user,Model model){
-        User usuario = new User();
-        usuario.setLogin(user.getLogin());
-         usuario.setSenha(user.getSenha());
-        boolean autenticado = service.autenticar(usuario.getLogin(), usuario.getSenha());
-        if (autenticado) {
-        return "redirect:/menu"; // Redireciona para o menu se autenticado com sucesso
-    } else {
-        model.addAttribute("error", true);
-        return "redirect:/telaErro"; // Redireciona para a página de erro se a autenticação falhar
-    }
+    public String autentitcar(@RequestParam String user, String senha){
+        List<User> usuarios = service.getAllUser();
+        for(User encontrado:usuarios){
+            if(encontrado.getLogin().equals(user))
+                return "menu";
+            }
+        return "telaErro" ;
+       
     }
     //ESTE METODO EXIBE A PAGINA DE ERRO
     @GetMapping("/erro")
     public ModelAndView pageErro(){
-        ModelAndView view = new ModelAndView("error");
+        ModelAndView view = new ModelAndView("telaErro");
         return view;
     }
     
@@ -62,6 +61,13 @@ public class UserController {
      @GetMapping("/menuAdmMorador")
     public ModelAndView pageMenuAdmMorador(){
         ModelAndView view = new ModelAndView("menuAdmMorador");
+        return view;
+    }
+    
+    ////ESTE METODO EXIBE A PAGINA MENU DA ADMINISTRAÇÃO
+     @GetMapping("/toast")
+    public ModelAndView pageToast(){
+        ModelAndView view = new ModelAndView("toast");
         return view;
     }
     

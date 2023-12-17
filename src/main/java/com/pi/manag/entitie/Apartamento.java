@@ -13,7 +13,6 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="apartamento")
-
 public class Apartamento {
     @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +27,7 @@ public class Apartamento {
     @JoinColumn(name = "idCondominio")
     private Condominio endereco;
     
-    public Apartamento(int id, int numeroApartamento, int qtdQuarto, int andar, float valor) {
+    public Apartamento(Integer id, int numeroApartamento, int qtdQuarto, int andar, float valor) {
         this.id = id;
         this.numeroApartamento = numeroApartamento;
         this.qtdQuarto = qtdQuarto;
@@ -36,14 +35,20 @@ public class Apartamento {
         this.valor = valor;
     }
 
+    public Apartamento(int numeroApartamento, int andar) {
+        this.numeroApartamento = numeroApartamento;
+        this.andar = andar;
+    }
+    
+
     public Apartamento() {
     }
-/*
-    public int getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -79,7 +84,7 @@ public class Apartamento {
         this.valor = valor;
     }
     
-*/
+
     
     
     public void mostrarApartamento(){

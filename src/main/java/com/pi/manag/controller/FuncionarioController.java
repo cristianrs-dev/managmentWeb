@@ -15,7 +15,7 @@ public class FuncionarioController {
     FuncionarioService service;
     
     /*PAGINA CADASTRO COLABORADOR*/
-    @GetMapping("/cadFuncionario")
+    @GetMapping("/cadColaborador")
     public String pageCadFuncionario(Model model){
         model.addAttribute("funcionario", new Funcionario());
         model.addAttribute("cargo", new Cargo());
