@@ -21,13 +21,16 @@ public class MoradorService {
     
     public Morador criarMorador(Morador morador,Veiculo veiculo,Apartamento apartamento) {
         Integer id = morador.getId();
+        Morador condomino= null;
         if(id == null || !service.existsById(id)){
         morador.setId(null);
-        morador.setVeiculo(veiculo);
-        morador.setApartamento(apartamento);
+        Apartamento ap = new Apartamento(apartamento.getNumeroApartamento(), apartamento.getAndar());
+        Veiculo automovel = new Veiculo(veiculo.getTipo(), veiculo.getModelo(), veiculo.getPlaca(), veiculo.getCor());
+         condomino = new Morador(morador.getTitular(), ap, automovel, morador.getSexo(), morador.getRg(), morador.getNome());
+        service.save(condomino);
         }
-        service.save(morador);
-        return morador;
+        
+        return condomino;
     }
     public List<Morador> getAllMoradores() {
         return service.findAll();
@@ -44,7 +47,7 @@ public class MoradorService {
             encontrado.setNome(morador.getNome());
             encontrado.setRg(morador.getRg());
             encontrado.setSexo(morador.getSexo());
-            encontrado.setTipo(morador.getTipo());
+            encontrado.setTitular(morador.getTitular());
             encontrado.setVeiculo(veiculo);
             encontrado.setApartamento(apartamento);
             return service.save(encontrado);

@@ -37,7 +37,7 @@ public class Veiculo {
         this.cor = cor;
     }
     
-/*
+
     public int getId() {
         return id;
     }
@@ -51,7 +51,12 @@ public class Veiculo {
     }
 
     public void setTipo(String tipo) {
-        this.tipo = tipo;
+        if(tipo.equals("carro")){
+            this.tipo="carro";
+        }else{
+            this.tipo = "moto";
+        }
+        
     }
 
     public String getModelo() {
@@ -88,7 +93,7 @@ public class Veiculo {
             System.out.println("Cor:.."+this.getModelo());
         
     }
-    */
+    
 
     
     

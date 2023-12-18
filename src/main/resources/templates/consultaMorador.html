@@ -61,7 +61,7 @@
                         <form id="validaForms" th:action="@{/consultarMorador}" th:object="${morador}" method="POST" >
                             <div class="mb-3">
                                 <label for="matricula" class="form-label  text-white">Matricula</label>
-                                <input th:field="${morador.id}" type="text" class="form-control" id="matricula" name = "matricula" required> 
+                                <input th:field="${morador.id}" type="text" class="form-control" id="id" required> 
                                 <button type="submit" class="btn btn-primary">Pesquisar</button>
                         
                             </div>
@@ -73,14 +73,26 @@
                             <span class="text-white" th:text="documento"></span><br>
                             <span th:text="${morador.rg}" class="text-white"/>
                             <br>
-                              <span class="text-white" th:text="tipo"></span><br>
-                            <span th:text="${morador.tipo}" class="text-white"/><br>
                                 
-                            <span class="text-white" th:text="apartamento"></span><br>
-                            <span th:text="${morador.apartamento.numeroApartamento}" class="text-white"/>
+                              <span class="text-white" th:text="tipo"></span><br>
+                            <span th:text="${morador.titular}" class="text-white"/>
                             <br>
-                            <span class="text-white" th:text="veiculo"></span><br>
-                            <span th:text="${morador.veiculo.placa}" class="text-white"/>
+                                <span class="text-white" th:text="apartamento"></span><br>
+                                <span class="text-white" th:text="${apartamento.numeroApartamento}"/>
+                            <br>
+                                <span class="text-white" th:text="veiculo"></span><br>
+                                <span th:text="${veiculo.placa}" class="text-white"/>
+                                <!--
+                                    <span class="text-white" th:text="apartamento.numeroApartamento"></span><br>
+                                    <span th:text="${morador.apartamento.numeroApartamento}" class="text-white"/>
+                              
+                            
+                            <br>
+                                
+                                    <span class="text-white" th:text="veiculo"></span><br>
+                                    <span th:text="${veiculo.placa}" class="text-white"/>
+                                
+                            -->
                                 
                         </form>
                        

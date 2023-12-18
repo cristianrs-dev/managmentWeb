@@ -40,17 +40,17 @@
             <div class="painel">
                 <div class="menu-adm">
                     <div>
-                        <a href="novoMorador.html">
+                        <a th:href="@{cadMorador}">
                             <img class="icone" th:src="@{/images/iconCtrlNovoMorador.png}" alt="iconeAdm">
                         </a>
                     </div>
                     <div>
-                        <a href="atualizaMorador.html">
+                        <a th:href="@{atualizaMorador}">
                             <img class="icone" th:src="@{/images/iconCtrlAtulizarCadFuncionario.png}" alt="iconeMorador">
                         </a>
                     </div>
                     <div>
-                        <a href="consultaMorador.html">
+                        <a th:href="@{consultaMorador}">
                             <img class="icone" th:src="@{/images/iconCtrlConsultarCadastro.png}" alt="iconeAdm">
                         </a>
                     </div>
@@ -63,12 +63,15 @@
                             <div class="mb-3">
                                 <label for="name" class="form-label text-white">Nome Completo</label>
                                 <input th:field="${morador.nome}" type="text"  class="form-control" id="nome" name = " nome" required pattern="[a-z]{1,20}$">
-                                
+                                <!--
                                 <select th:field="${morador.rg}" name="documento"  id="documento" required>
-                                    <option th:selected="${morador.rg == rg}" value="rg">RG</option>
-                                    <option th:selected="${morador.cpf == cpf}" value="cpf">CPF</option>
-                                </select><label for="documento" class="form-label text-white"></label>
-                                <input th:field="${morador.rg}" type="text"  class="form-control" id="rg" name = "rg" >
+                                    <option th:selected="${morador.rg == rg}">rg</option>
+                                    <option th:selected="${morador.cpf == cpf}">cpf</option>
+                                </select>
+                                -->
+                                <label for="documento" class="form-label text-white">Documento</label>
+                                
+                                <input th:field="${morador.rg}" type="text"  class="form-control" id="rg" name = "rg" required>
                                 <br>
                                     <label for="name" class="form-label text-white">sexo</label>
                                 <select th:field="${morador.sexo}" name="genero"  id="sexo" required>
@@ -77,14 +80,13 @@
                                 </select>
                                 <br>
                                      <label for="name" class="form-label text-white">tipo de morador</label>
-                                <select th:field="${morador.tipo}" name="titular"  id="titular" required>
-                                    <option th:selected="${morador.tipo == 'proprietario'}" value="proprietario">proprietario</option>
-                                    <option th:selected="${morador.rg == 'inquilino'}" value="inquilino">inquilino</option>
-                                </select><label for="genero" class="form-label"></label>
+                                <select th:field="${morador.titular}" name="morador"  id="morador" required>
+                                    <option th:selected="${morador.titular == 'proprietario'}" value="proprietario">proprietario</option>
+                                    <option th:selected="${morador.titular == 'inquilino'}" value="inquilino">inquilino</option>
+                                </select>
                                 <br>
                                  
                                 <label for="veiculo" class="form-label  text-white">Veículo</label>
-                                <br>
                                 <select th:field="${veiculo.tipo}" name="veiculo" id="veiculo">
                                     <option th:selected="${veiculo.tipo == 'carro'}" value="carro">Carro</option>
                                     <option th:selected="${veiculo.tipo == 'moto'}" value="moto">Moto</option>

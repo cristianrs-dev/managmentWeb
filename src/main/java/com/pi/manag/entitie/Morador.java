@@ -22,8 +22,9 @@ public class Morador extends PessoaFisica{
      @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String tipo;
-    //@ManyToOne
+    private String titular
+;    //@ManyToOne
+    
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="idApartamento")
     private Apartamento apartamento;
@@ -48,10 +49,10 @@ public class Morador extends PessoaFisica{
     @JoinColumn(name = "idVisita")
     private Visitante visita;
 
-    public Morador(Integer id, String tipo, Apartamento apartamento, Condominio condominio, Secretaria secretaria, Veiculo veiculo, Visitante visita, String sexo, String rg, String nome) {
+    public Morador(Integer id, String titular, Apartamento apartamento, Condominio condominio, Secretaria secretaria, Veiculo veiculo, Visitante visita, String sexo, String rg, String nome) {
         super(sexo, rg, nome);
         this.id = id;
-        this.tipo = tipo;
+        this.titular = titular;
         this.apartamento = apartamento;
         this.condominio = condominio;
         this.secretaria = secretaria;
@@ -59,10 +60,10 @@ public class Morador extends PessoaFisica{
         this.visita = visita;
     }
 
-    public Morador(Integer id, String tipo, Apartamento apartamento, Condominio condominio, Secretaria secretaria, Veiculo veiculo, Visitante visita, String nome) {
+    public Morador(Integer id, String titular, Apartamento apartamento, Condominio condominio, Secretaria secretaria, Veiculo veiculo, Visitante visita, String nome) {
         super(nome);
         this.id = id;
-        this.tipo = tipo;
+        this.titular = titular;
         this.apartamento = apartamento;
         this.condominio = condominio;
         this.secretaria = secretaria;
@@ -70,9 +71,9 @@ public class Morador extends PessoaFisica{
         this.visita = visita;
     }
 
-    public Morador(Integer id, String tipo, Apartamento apartamento, Condominio condominio, Secretaria secretaria, Veiculo veiculo, Visitante visita) {
+    public Morador(Integer id, String titular, Apartamento apartamento, Condominio condominio, Secretaria secretaria, Veiculo veiculo, Visitante visita) {
         this.id = id;
-        this.tipo = tipo;
+        this.titular = titular;
         this.apartamento = apartamento;
         this.condominio = condominio;
         this.secretaria = secretaria;
@@ -97,22 +98,22 @@ public class Morador extends PessoaFisica{
         this.id = id;
     }
 
-    public Morador(String tipo, Apartamento apartamento, Veiculo veiculo, String sexo, String rg, String nome) {
+    public Morador(String titular, Apartamento apartamento, Veiculo veiculo, String sexo, String rg, String nome) {
         super(sexo, rg, nome);
-        this.tipo = tipo;
+        this.titular = titular;
         this.apartamento = apartamento;
         this.veiculo = veiculo;
     }
 
-    public Morador(String tipo, Apartamento apartamento, Veiculo veiculo, String nome) {
+    public Morador(String titular, Apartamento apartamento, Veiculo veiculo, String nome) {
         super(nome);
-        this.tipo = tipo;
+        this.titular = titular;
         this.apartamento = apartamento;
         this.veiculo = veiculo;
     }
 
-    public Morador(String tipo, Apartamento apartamento, Veiculo veiculo) {
-        this.tipo = tipo;
+    public Morador(String titular, Apartamento apartamento, Veiculo veiculo) {
+        this.titular = titular;
         this.apartamento = apartamento;
         this.veiculo = veiculo;
     }
@@ -131,16 +132,19 @@ public class Morador extends PessoaFisica{
         this.id = id;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getTitular() {
+        
+        return titular;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = "proprietario";
+    public void setTitular(String titular) {
+        if(titular.equals("proprietario")){
+            this.titular="proprietario";
+        }else{
+            this.titular="iniquilino";
+        }
     }
-    public void registrarTipoMorador(String tipo){
-        this.tipo=tipo;
-    }
+   
    
     @Override
     public void mostrarDados() {

@@ -1,5 +1,4 @@
 let cadastrar = document.getElementById("cadastrar");
-alert("script");
 
 function menu(){
     let menu = document.getElementById("menu-mobile");

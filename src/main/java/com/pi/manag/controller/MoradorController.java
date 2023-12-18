@@ -34,47 +34,110 @@ public class MoradorController {
         Veiculo veiculo = new Veiculo();
         model.addAttribute("morador", morador);
         model.addAttribute("apartamento", apartamento);
-    
         model.addAttribute("veiculo", veiculo);
         return "cadMorador";
     }
             @PostMapping("/cadastroMorador")
-            public String cadastrarMorador(@ModelAttribute("morador") Morador morador,
-                                            @ModelAttribute("apartamento")Apartamento apartamento,
-                                             @ModelAttribute("veiculo")Veiculo veiculo){
-                Apartamento ap = new Apartamento(apartamento.getNumeroApartamento(), apartamento.getAndar());
-                Veiculo veic = new Veiculo(veiculo.getTipo(), veiculo.getModelo(), veiculo.getPlaca(), veiculo.getCor());
-                Morador condomino = new Morador(morador.getTipo(), ap, veic, morador.getSexo(), morador.getRg(), morador.getNome());
+            public String cadastrarMorador(@ModelAttribute("morador") Morador m,
+                                            @ModelAttribute("apartamento")Apartamento ap,
+                                             @ModelAttribute("veiculo")Veiculo v){
+               
+                Apartamento apartamento = new Apartamento();
+                apartamento.setAndar(ap.getAndar());
+                apartamento.setNumeroApartamento(ap.getNumeroApartamento());
+                
+                Veiculo veiculo = new Veiculo();
+                veiculo.setTipo(v.getTipo());
+                veiculo.setModelo(v.getModelo());
+                veiculo.setPlaca(v.getPlaca());
+                veiculo.setCor(v.getCor());
+                
+                Morador condomino = new Morador(m.getTitular(), apartamento, veiculo, m.getSexo(), m.getRg(), m.getNome());
+                
                 service.criarMorador(condomino, veiculo, apartamento);
                 
                 
               return "menu" ;
             }
     
-    /****************************************************************************/
     
     /*ATUALIZAR MORADOR*/
     @GetMapping("/atualizaMorador")
     public String pageAtualizaCadMorador(Model model){
-        model.addAttribute("morador", new Morador());
-        model.addAttribute("apartamento", new Apartamento());
-        model.addAttribute("veiculo", new Veiculo());
+        
+        Morador morador = new Morador();
+        Apartamento apartamento = new Apartamento();
+        Veiculo veiculo = new Veiculo();
+        model.addAttribute("morador", morador);
+        model.addAttribute("apartamento", apartamento);
+        model.addAttribute("veiculo", veiculo);
         return "atualizaMorador";
     }
-    /*TELA CONSULTA MORADOR*/
-    @GetMapping("/consultaMorador")
-    public String pageConsultaMorador(Model model){
-        model.addAttribute("morador", new Morador());
-        model.addAttribute("apartamento", new Apartamento());
-        model.addAttribute("veiculo", new Veiculo());
+    
+         
+          @PostMapping("/atualizarMorador")
+          public String getAtualizarMorador(@RequestParam(name="id") Integer id,
+                                      /*  @ModelAttribute Morador morador,
+                                        @ModelAttribute Apartamento ap,
+                                        @ModelAttribute Veiculo automovel
+                                        ,*/Model model){
+              Morador condomino = service.getMoradorId(id);
+              Apartamento apartamento = condomino.getApartamento();
+              Veiculo veiculo = condomino.getVeiculo();
+              service.atualizarMorador(id, condomino, veiculo, apartamento);
+              /*
+              Apartamento apartamento = new Apartamento(ap.getNumeroApartamento(), ap.getAndar());
+              Veiculo veiculo = new Veiculo(automovel.getTipo(), automovel.getModelo(), automovel.getPlaca(), automovel.getCor());
+             
+                
+                condomino.setNome(condomino.getNome());
+                condomino.setSexo(condomino.getSexo());
+                condomino.setRg(condomino.getRg());
+                condomino.setTitular(condomino.getTitular());
+                condomino.setApartamento(apartamento);
+                veiculo.setTipo(automovel.getTipo());
+                veiculo.setModelo(automovel.getModelo());
+                veiculo.setPlaca(automovel.getPlaca());
+                veiculo.setCor(automovel.getCor());
+                service.atualizarMorador(condomino.getId(), condomino, veiculo, apartamento);
+                */
+                model.addAttribute("morador", condomino);
+                model.addAttribute("veiculo", veiculo);
+                model.addAttribute("apartamento", apartamento);
+        return "atualizaMorador";
+    }  
+          
+          
+  
+   
+          
+          
+    /*TELA CONSULTA MORADOR*******************/
+   @GetMapping("/consultaMorador")
+    public String pageConsultaMorador(@ModelAttribute Morador morador,
+                                      @ModelAttribute Apartamento apartamento,
+                                      @ModelAttribute Veiculo veiculo,
+                                        Model model){
+       
+        model.addAttribute("morador", morador);
+        model.addAttribute("apartamento", apartamento);
+        model.addAttribute("veiculo", veiculo);
         return "consultaMorador";
     }
     
     @PostMapping("/consultarMorador")
-    public String getDadosMorador(@RequestParam Integer id,Model model){
+    public String consultarMorador(@RequestParam(name="id") Integer id,Model model){
         Morador morador = service.getMoradorId(id);
+        Apartamento apartamento = morador.getApartamento();
+        Veiculo veiculo = morador.getVeiculo();
+        
         model.addAttribute("morador", morador);
+        model.addAttribute("apartamento", apartamento);
+        model.addAttribute("veiculo", veiculo);
+        
+   
         return "consultaMorador";
     }
+   
 
 }
