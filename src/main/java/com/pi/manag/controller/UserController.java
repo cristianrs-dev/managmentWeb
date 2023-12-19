@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,19 +29,23 @@ public class UserController {
     }
     
     @PostMapping("/autenticar")
-    public String autentitcar(@RequestParam String user, String senha){
+    public String autentitcar(@ModelAttribute User user){
+        String retorno="";
         List<User> usuarios = service.getAllUser();
         for(User encontrado:usuarios){
-            if(encontrado.getLogin().equals(user))
-                return "menu";
-            }
-        return "telaErro" ;
-       
+            if(encontrado.getLogin().equals(user.getLogin())){
+                if(encontrado.getSenha().equals(user.getSenha()))
+                    retorno= "menu";
+            }else{
+                   retorno= "error" ; 
+              }
+        }
+        return retorno;
     }
     //ESTE METODO EXIBE A PAGINA DE ERRO
     @GetMapping("/erro")
     public ModelAndView pageErro(){
-        ModelAndView view = new ModelAndView("telaErro");
+        ModelAndView view = new ModelAndView("error");
         return view;
     }
     
