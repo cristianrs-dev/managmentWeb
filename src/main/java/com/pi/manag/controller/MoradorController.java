@@ -76,36 +76,29 @@ public class MoradorController {
     
          
           @PostMapping("/atualizarMorador")
-          public String getAtualizarMorador(@RequestParam(name="id") Integer id,
-                                      /*  @ModelAttribute Morador morador,
-                                        @ModelAttribute Apartamento ap,
-                                        @ModelAttribute Veiculo automovel
-                                        ,*/Model model){
-              Morador condomino = service.getMoradorId(id);
-              Apartamento apartamento = condomino.getApartamento();
-              Veiculo veiculo = condomino.getVeiculo();
-              service.atualizarMorador(id, condomino, veiculo, apartamento);
-              /*
-              Apartamento apartamento = new Apartamento(ap.getNumeroApartamento(), ap.getAndar());
-              Veiculo veiculo = new Veiculo(automovel.getTipo(), automovel.getModelo(), automovel.getPlaca(), automovel.getCor());
-             
-                
-                condomino.setNome(condomino.getNome());
-                condomino.setSexo(condomino.getSexo());
-                condomino.setRg(condomino.getRg());
-                condomino.setTitular(condomino.getTitular());
-                condomino.setApartamento(apartamento);
-                veiculo.setTipo(automovel.getTipo());
-                veiculo.setModelo(automovel.getModelo());
-                veiculo.setPlaca(automovel.getPlaca());
-                veiculo.setCor(automovel.getCor());
-                service.atualizarMorador(condomino.getId(), condomino, veiculo, apartamento);
-                */
-                model.addAttribute("morador", condomino);
-                model.addAttribute("veiculo", veiculo);
-                model.addAttribute("apartamento", apartamento);
+          public String getRegistroMorador(@RequestParam Integer id,
+                                            Model model){
+              Morador encontrado = service.getMoradorId(id);
+              Apartamento apEncontrado = encontrado.getApartamento();
+              Veiculo vEncontrado = encontrado.getVeiculo();
+ 
+                model.addAttribute("morador", encontrado);
+                model.addAttribute("veiculo", vEncontrado);
+                model.addAttribute("apartamento", apEncontrado);
         return "atualizaMorador";
     }  
+          @PostMapping("/registroAtualizado")
+          public String putRegistroMorador(@ModelAttribute Morador m,
+                                           @ModelAttribute Apartamento ap,
+                                           @ModelAttribute Veiculo v){
+              
+              //Morador novoMorador = new Morador(m.getTitular(), 
+              //                          ap, v, m.getSexo(), m.getRg(), m.getNome());
+              service.atualizarMorador(m.getId(), m, v, ap);
+              return "menuAdmMorador";
+          }
+          
+          
           
           
   

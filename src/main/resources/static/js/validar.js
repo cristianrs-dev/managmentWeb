@@ -49,6 +49,11 @@ $("#validaForms").validate({
             required: true
            /* minlength: 6,
             maxlength: 12*/
+        },
+        numero: {
+            required: true
+           /* minlength: 6,
+            maxlength: 12*/
         }
 
     },
@@ -92,7 +97,12 @@ $("#validaForms").validate({
             required: "campo cor é obrigatório",
             minlength: "A senha deve ter ao menos 6 caracteres",
             maxlength: "A senha deve ter no máximo 12 caracteres"
-        }                               
+        },
+        numero: {
+            required: "campo cor é obrigatório",
+            minlength: "A senha deve ter ao menos 6 caracteres",
+            maxlength: "A senha deve ter no máximo 12 caracteres"
+        }  
     },
     errorClass: "text-white"
   });
