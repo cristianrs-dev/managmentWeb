@@ -20,6 +20,7 @@
         </div>
     </header>
     <main>
+        
             <div id="menu-mobile" class="menu-adm-mobile">
                 <div>
                     <a th:href="@{cadMorador}">
@@ -37,86 +38,95 @@
                     </a>
                 </div>
             </div>
-            <div class="painel">
-                <div class="menu-adm">
-                    <div>
-                        <a th:href="@{cadMorador}">
-                            <img class="icone" th:src="@{/images/iconCtrlNovoMorador.png}" alt="iconeAdm">
-                        </a>
-                    </div>
-                    <div>
-                        <a th:href="@{atualizaMorador}">
-                            <img class="icone" th:src="@{/images/iconUpdateCadastro.png}" alt="iconeMorador">
-                        </a>
-                    </div>
-                    <div>
-                        <a th:href="@{consultaMorador}">
-                            <img class="icone" th:src="@{/images/iconCtrlConsultarCadastro.png}" alt="iconeAdm">
-                        </a>
+        
+            <div class="d-flex">
+                <!--ICONES------------------------->
+                <div class="">
+                    <div class="menu-adm">
+                        <div>
+                            <a th:href="@{cadMorador}">
+                                <img class="icone" th:src="@{/images/iconCtrlNovoMorador.png}" alt="iconeAdm">
+                            </a>
+                        </div>
+                        <div>
+                            <a th:href="@{atualizaMorador}">
+                                <img class="icone" th:src="@{/images/iconUpdateCadastro.png}" alt="iconeMorador">
+                            </a>
+                        </div>
+                        <div>
+                            <a th:href="@{consultaMorador}">
+                                <img class="icone" th:src="@{/images/iconCtrlConsultarCadastro.png}" alt="iconeAdm">
+                            </a>
+                        </div>
                     </div>
                 </div>
+                <!--------------------------->
+                    <div class="alinhamento-mobile d-flex flex-column justify-content-center align-content-center w-100" >
+                        <!-- CAIXA DE PESQUISA ------------------------------------->    
+                        <div >
+                            <form  id="validaForms" th:action="@{/atualizarMorador}" class=" alinhamento-mobile alinhamento-desktop d-flex flex-column justify-content-center align-content-center w-auto" th:object="${morador}" method="POST" >
+                                    <label for="matricula" class="form-label text-white">Matricula</label><br>
+                                    <input th:field="${morador.id}" type="text" id="matricula" class="input" name = "id" required> 
+                                    <button type="submit" class="btn btn-primary">Pesquisar</button><br>
+                            </form> 
+                        </div>
+                        <!------------------------------------------------->   
+                    
+                        
+                        <div class="painel-menu" >
 
-                <div class="container-painel">
-                    <div class="painel-menu" >
-                        
-                        
-                            
-                        
-                              
-                                
-                        <form id="validaForms" th:action="@{/atualizarMorador}" th:object="${morador}" method="POST" >
-                                <label for="matricula" class="form-label text-white">Matricula</label>
-                                <input th:field="${morador.id}" type="text" class="form-control" id="matricula" name = "id" required> 
-                                <button type="submit" class="btn btn-primary">Pesquisar</button>
-                        </form>
-                        <form th:action="@{/registroAtualizado}" th:object="${morador}" method="POST">
-                            <div class="mb-3">
-                                <div class="mb-3">
-                                <input th:field="${morador.id}" type="text" class="form-control" id="matricula" name = "id" required/>
-                                <label for="name" class="form-label text-white">Nome Completo</label>
-                                <input th:field="${morador.nome}" type="text"  class="form-control" id="nome">
-                                    <br>
+                            <form th:action="@{/registroAtualizado}" th:object="${morador}"   method="POST">
+                                <div class="alinhamento-mobile alinhamento-desktop" >
+
+                                    <div class="mb-3">
+                                        <input th:field="${morador.id}" type="text"  id="matricula" name = "id" required/><br>
                                         
-                                    <label for="documento" class="form-label text-white">documento</label>
-                                <input th:field="${morador.rg}" type="text"  class="form-control" id="rg"  >
-                                <br>
+                                        <label for="name" class="form-label text-white">Nome Completo</label><br>
+                                        <input th:field="${morador.nome}" class="input" type="text" id="nome"><br>
+                                        
+                                        <label for="documento" class="form-label text-white">documento</label><br>
+                                        <input th:field="${morador.rg}" class="input" type="text"   id="rg"  ><br>
+                                        
+                                        <label for="name" class="form-label text-white">sexo</label><br>
+                                        <input th:field="${morador.sexo}" class="input"  type="text"  id="tipo" ><br>
+                                        
+                                        <label for="name" class="form-label text-white">tipo de morador</label><br>
+                                        <input th:field="${morador.titular}" class="input"  type="text" id="tipo" ><br>
+                                        
+                                            <label for="veiculo" class="form-label  text-white">Veículo</label><br>
+                                        
+                                        <input th:field="${veiculo.tipo}" class="input" type="text"  id="tipo" >
+                                    </div>
                                     
-                                    <label for="name" class="form-label text-white">sexo</label>
-                                    <input th:field="${morador.sexo}" type="text"  class="form-control" id="tipo" >
-                                <br>
-                                    
-                                     <label for="name" class="form-label text-white">tipo de morador</label>
-                                    <input th:field="${morador.titular}" type="text"  class="form-control" id="tipo" >
-                                <br>
-                                
-                                <label for="veiculo" class="form-label  text-white">Veículo</label>
-                                <br>
-                                <input th:field="${veiculo.tipo}" type="text"  class="form-control" id="tipo" >
-                                <br>
-                                    
-                                <label for="modelo" class="form-label  text-white">Modelo</label>
-                                <input th:field="${veiculo.modelo}" type="text" class="form-control" id="modelo" >
+                                        
 
-                                <label for="placa" class="form-label text-white">Placa</label>
-                                <input th:field="${veiculo.placa}" type="text" class="form-control" id="placa"  >
-
-                                <label for="cor" class="form-label text-white">Cor</label>
-                                <input th:field="${veiculo.cor}" type="text" class="form-control" id="cor" >
-                                    <br>
-                                         
-                                        <label for="apartamento" class="form-label text-white">numero apartamento</label>
-                                        <input th:field="${apartamento.numeroApartamento}" type="text" class="form-control" id="numero" >
-                         
-                                    <br>
-                                <label class="form-label text-white">Andar</label>
-                                <input th:field="${apartamento.andar}" type="text" class="form-control" id="andar">
-                            </div>
-                           
-                            <button type="submit" class="btn btn-primary">Salvar</button>
-                        </form>
-                       
+                                    <div class="mb-3 p-1" >
+                                        <br>
+                                        <label for="modelo" class="form-label  text-white">Modelo</label><br>
+                                        <input th:field="${veiculo.modelo}" class="input"  type="text" id="modelo"><br>
+                                        
+                                        <label for="placa" class="form-label text-white">Placa</label><br>
+                                        <input th:field="${veiculo.placa}" class="input" type="text" id="placa"  ><br>
+                                        
+                                        <label for="cor" class="form-label text-white">Cor</label><br>
+                                        <input th:field="${veiculo.cor}" class="input"  type="text" id="cor" ><br>
+                                        
+                                        <label for="apartamento" class="form-label text-white">numero apartamento</label><br>
+                                        <input th:field="${apartamento.numeroApartamento}" class="input"  type="text" id="numero" ><br>
+                                        
+                                        <label class="form-label text-white">Andar</label><br>
+                                        <input th:field="${apartamento.andar}" class="input"  type="text" id="andar"><br>
+                                    </div>
+                               </div>
+                                    <button type="submit" class="btn btn-primary">Salvar</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                
+                
+                
+               
+                
             </div>
             
         

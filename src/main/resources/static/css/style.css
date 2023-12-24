@@ -68,6 +68,13 @@
 
 .background-menu-morador{
     background-color: #0A7AA6;
+    
+}
+
+.alinhamento-desktop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /*************************************/
 
